@@ -11,10 +11,44 @@
         background-color: skyblue;
 
         }
+
+             /* CSS for navigation */
+        .navbar {
+            background-color: #f2f2f2;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #333;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+        }
+
+        .navbar a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
     </style>
 </head>
 <body>
+
+<div class="navbar">
+    <a th:href="@{/schools/new}" class="active">Add School</a>
+    <a th:href="@{/}" class="active">Go BAck Home</a>
+
+</div>
+
 <div class="container">
+
+
     <h1>School List</h1>
     <table class="table table-striped">
         <thead>

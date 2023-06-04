@@ -1,14 +1,12 @@
 package com.rungroup.web2.controller;
 
+import com.rungroup.web2.model.User;
 import com.rungroup.web2.model.school;
 import com.rungroup.web2.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -86,6 +84,16 @@ return "schools1-list";
         schoolservice.update(school);
         return "redirect:/schools";
     }
+
+    @GetMapping("/userSchools")
+    public String schoolsList(Model model, @RequestParam("userid") long userid){
+
+        List<school> school =schoolservice.findAllschools();
+        model.addAttribute("school",school);
+        model.addAttribute("userid",userid);
+        return "schools-list_parent_view";
+    }
+
 
 
 }

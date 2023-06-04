@@ -7,4 +7,6 @@ public interface UserService {
     String logConfirmation(String email,String password);
 
     void saveUser(User user);
+
+    void userApply(long userid);
 }

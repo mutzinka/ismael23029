@@ -44,6 +44,31 @@
             border-radius: 4px;
         }
 
+               /* CSS for navigation */
+        .navbar {
+            background-color: #f2f2f2;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #333;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+        }
+
+        .navbar a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
          body{
 
         background-color: skyblue;
@@ -51,6 +76,12 @@
     </style>
 </head>
 <body>
+
+<div class="navbar">
+    <a th:href="@{/}" class="active"> GO BACk To Home</a>
+
+</div>
+
 <div class="form-container">
     <h2> ADD School As Admin </h2>
     <form th:action="@{/schools/new}" method="post">

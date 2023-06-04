@@ -5,9 +5,9 @@ import com.rungroup.web2.service.Impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -28,27 +28,33 @@ public class UserController {
     @PostMapping("/signup")
     public String signupSave(User user){
         userService.saveUser(user);
-       // return "redirect:/login";
-
-        return "login";
+        return "redirect:/login";
 
     }
 
     @GetMapping("/login")
     public String login(Model model){
-        User user = new User();
-        model.addAttribute("user",user);
         return "login";
     }
 
     @PostMapping("/login")
-    public String loginCheck(@ModelAttribute("user") User user){
-       String results = userService.logConfirmation(user.getEmail(),user.getPassword());
+    public String loginCheck(@RequestParam("email") String email, @RequestParam("password") String password){
+       String results = userService.logConfirmation(email,password);
 
         return results;
     }
 
+    @GetMapping("/school/{sklid}/apply")
+    public String userApply(@PathVariable("sklid") long sklid,@RequestParam("userid") long userid, Model model){
+        userService.userApply(sklid);
+        model.addAttribute("sklid",sklid);
+        model.addAttribute("userid",userid);
+        return "Final";
+    }
 
-
+    @GetMapping("/Final")
+    public String Final(Model model){
+        return "Final";
+    }
 
 }

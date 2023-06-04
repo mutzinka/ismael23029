@@ -54,9 +54,11 @@
 <body>
 <div class="login-container">
     <h2>Login Form</h2>
-    <form action="/login" method="post">
-        <input type="text" name="email" placeholder="email" required="required" />
-        <input type="password" name="password" placeholder="Password" required="required" />
+    <form th:action="@{/login}" method="post" role="form">
+        <label class="abv" for="email">Email</label> <br>
+        <input type="email" name="email" id="email" th:fields="*{email}" style="height:2.5em;width:22em;" required/><br>
+        <label class="abv" for="password">Password</label><br>
+        <input type="password" name="password" id="password" th:fields="*{password}" required/><br>
         <input type="submit" value="Login" />
 
 
